@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Yaya's Family Foundation Soccer Tournament</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f7f4;
+      margin: 0;
+      padding: 0;
+      color: #1f2937;
+    }
+
+    header {
+      background: #166534;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+    }
+
+    header p {
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #166534;
+      margin-top: 0;
+    }
+
+    .intro {
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 11px;
+      box-sizing: border-box;
+      border: 1px solid #777;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 3px solid #bbf7d0;
+      border-color: #166534;
+    }
+
+    .error {
+      color: #b00020;
+      font-size: 14px;
+      margin-top: 5px;
+      min-height: 18px;
+    }
+
+    .invalid {
+      border: 2px solid #b00020;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 6px;
+      background: #166534;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #14532d;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 14px;
+      border-radius: 6px;
+      line-height: 1.5;
+    }
+
+    .success {
+      background: #dcfce7;
+      color: #14532d;
+    }
+
+    .api-error {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Yaya's Family Foundation</h1>
+
+    <h2 style="color: white;">
+      Louisville & Indiana Youth Soccer Tournament
+    </h2>
+
+    <p>
+      Bringing young people from across Louisville and the Indiana region
+      together through soccer, friendship, fun, and networking.
+    </p>
+  </header>
+
+
+  <main class="container">
+
+    <h2>Soccer Tournament Application</h2>
+
+    <p class="intro">
+      Yaya's Family Foundation invites young soccer players from Louisville
+      and surrounding Indiana communities to apply to participate in our
+      community soccer tournament. The goal of the tournament is to create
+      an opportunity for young people to compete, have fun, build friendships,
+      and network with other members of the community.
+    </p>
+
+
+    <form id="soccerForm" novalidate>
+
+      <!-- Full Name -->
+      <div class="form-group">
+
+        <label for="fullName">
+          Player Full Name
+        </label>
+
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          aria-describedby="nameError"
+        >
+
+        <div
+          id="nameError"
+          class="error"
+          aria-live="polite">
+        </div>
+
+      </div>
+
+
+      <!-- Email -->
+      <div class="form-group">
+
+        <label for="email">
+          Email Address
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          aria-describedby="emailError"
+        >
+
+        <div
+          id="emailError"
+          class="error"
+          aria-live="polite">
+        </div>
+
+      </div>
+
+
+      <!-- Phone -->
+      <div class="form-group">
+
+        <label for="phone">
+          Phone Number
+        </label>
+
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          aria-describedby="phoneError"
+        >
+
+        <div
+          id="phoneError"
+          class="error"
+          aria-live="polite">
+        </div>
+
+      </div>
+
+
+      <!-- City -->
+      <div class="form-group">
+
+        <label for="city">
+          City
+        </label>
+
+        <input
+          type="text"
+          id="city"
+          name="city"
+          placeholder="Example: Louisville or Jeffersonville"
+          aria-describedby="cityError"
+        >
+
+        <div
+          id="cityError"
+          class="error"
+          aria-live="polite">
+        </div>
+
+      </div>
+
+
+      <!-- Age -->
+      <div class="form-group">
+
+        <label for="age">
+          Age
+        </label>
+
+        <input
+          type="number"
+          id="age"
+          name="age"
+          min="10"
+          max="30"
+          aria-describedby="ageError"
+        >
+
+        <div
+          id="ageError"
+          class="error"
+          aria-live="polite">
+        </div>
+
+      </div>
+
+
+      <!-- Position -->
+      <div class="form-group">
+
+        <label for="position">
+          Preferred Soccer Position
+        </label>
+
+        <select
+          id="position"
+          name="position"
+          aria-describedby="positionError">
+
+          <option value="">
+            Select a position
+          </option>
+
+          <option value="Goalkeeper">
+            Goalkeeper
+          </option>
+
+          <option value="Defender">
+            Defender
+          </option>
+
+          <option value="Midfielder">
+            Midfielder
+          </option>
+
+          <option value="Forward">
+            Forward
+          </option>
+
+          <option value="Any">
+            Any Position
+          </option>
+
+        </select>
+
+        <div
+          id="positionError"
+          class="error"
+          aria-live="polite">
+        </div>
+
+      </div>
+
+
+      <!-- Reason for joining -->
+      <div class="form-group">
+
+        <label for="reason">
+          Why would you like to join the tournament?
+        </label>
+
+        <textarea
+          id="reason"
+          name="reason"
+          placeholder="Tell us briefly why you would like to participate."
+          aria-describedby="reasonError">
+        </textarea>
+
+        <div
+          id="reasonError"
+          class="error"
+          aria-live="polite">
+        </div>
+
+      </div>
+
+
+      <button type="submit">
+        Submit Tournament Application
+      </button>
+
+    </form>
+
+
+    <div
+      id="result"
+      aria-live="polite">
+    </div>
+
+  </main>
+
+
+  <footer>
+    Yaya's Family Foundation • Connecting Youth Through Sports and Community
+  </footer>
+
+
+  <script>
+
+    // Get the form
+    const form = document.getElementById("soccerForm");
+
+    // Get the form fields
+    const fullName = document.getElementById("fullName");
+    const email = document.getElementById("email");
+    const phone = document.getElementById("phone");
+    const city = document.getElementById("city");
+    const age = document.getElementById("age");
+    const position = document.getElementById("position");
+    const reason = document.getElementById("reason");
+
+    // Get the error message areas
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const phoneError = document.getElementById("phoneError");
+    const cityError = document.getElementById("cityError");
+    const ageError = document.getElementById("ageError");
+    const positionError =
+      document.getElementById("positionError");
+    const reasonError =
+      document.getElementById("reasonError");
+
+    const result = document.getElementById("result");
+
+
+    // Function to automatically clear an error
+    // when the user begins fixing the field
+    function clearError(input, errorElement) {
+
+      input.addEventListener("input", function () {
+
+        errorElement.textContent = "";
+
+        input.classList.remove("invalid");
+
+      });
+
+    }
+
+
+    clearError(fullName, nameError);
+
+    clearError(email, emailError);
+
+    clearError(phone, phoneError);
+
+    clearError(city, cityError);
+
+    clearError(age, ageError);
+
+    clearError(position, positionError);
+
+    clearError(reason, reasonError);
+
+
+
+    // Form submit validation
+    form.addEventListener("submit", function (event) {
+
+      // Stop the form from submitting automatically
+      event.preventDefault();
+
+      let isValid = true;
+
+      // Clear previous submission message
+      result.textContent = "";
+
+      result.className = "";
+
+
+      // Full Name Validation
+      if (fullName.value.trim() === "") {
+
+        nameError.textContent =
+          "Please enter the player's full name.";
+
+        fullName.classList.add("invalid");
+
+        isValid = false;
+
+      }
+
+
+      // Email Validation
+      if (email.value.trim() === "") {
+
+        emailError.textContent =
+          "Please enter an email address.";
+
+        email.classList.add("invalid");
+
+        isValid = false;
+
+      }
+
+      // Check email format
+      else if (!email.value.includes("@")) {
+
+        emailError.textContent =
+          "Please enter a valid email address containing @.";
+
+        email.classList.add("invalid");
+
+        isValid = false;
+
+      }
+
+
+      // Phone Validation
+      if (phone.value.trim() === "") {
+
+        phoneError.textContent =
+          "Please enter a phone number.";
+
+        phone.classList.add("invalid");
+
+        isValid = false;
+
+      }
+
+
+      // City Validation
+      if (city.value.trim() === "") {
+
+        cityError.textContent =
+          "Please enter your city.";
+
+        city.classList.add("invalid");
+
+        isValid = false;
+
+      }
+
+
+      // Age Validation
+      if (age.value.trim() === "") {
+
+        ageError.textContent =
+          "Please enter your age.";
+
+        age.classList.add("invalid");
+
+        isValid = false;
+
+      }
+
+
+      // Position Validation
+      if (position.value === "") {
+
+        positionError.textContent =
+          "Please select a soccer position.";
+
+        position.classList.add("invalid");
+
+        isValid = false;
+
+      }
+
+
+      // Reason Validation
+      if (reason.value.trim() === "") {
+
+        reasonError.textContent =
+          "Please tell us why you would like to participate.";
+
+        reason.classList.add("invalid");
+
+        isValid = false;
+
+      }
+
+
+      // Stop if validation failed
+      if (!isValid) {
+
+        return;
+
+      }
+
+
+      result.textContent =
+        "Submitting your tournament application...";
+
+
+      // BONUS:
+      // Send the application to a free public test API
+      fetch("https://jsonplaceholder.typicode.com/posts", {
+
+        method: "POST",
+
+        headers: {
+
+          "Content-Type": "application/json"
+
+        },
+
+        body: JSON.stringify({
+
+          fullName: fullName.value,
+
+          email: email.value,
+
+          phone: phone.value,
+
+          city: city.value,
+
+          age: age.value,
+
+          position: position.value,
+
+          reason: reason.value
+
+        })
+
+      })
+
+      .then(function (response) {
+
+        // Check if the API request was successful
+        if (!response.ok) {
+
+          throw new Error(
+            "The application could not be submitted."
+          );
+
+        }
+
+        return response.json();
+
+      })
+
+      .then(function (data) {
+
+        result.className = "success";
+
+        result.innerHTML =
+          "<strong>Application Submitted!</strong><br>" +
+          "Thank you, " +
+          fullName.value +
+          ". Your application to participate in the " +
+          "Yaya's Family Foundation Soccer Tournament " +
+          "has been received. We look forward to bringing " +
+          "young people together for soccer, fun, and networking.";
+
+        form.reset();
+
+      })
+
+      .catch(function (error) {
+
+        result.className = "api-error";
+
+        result.textContent =
+          "There was a problem submitting your application: " +
+          error.message;
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
